@@ -1,6 +1,6 @@
 # yaml-language-server: $schema=https://www.schemastore.org/github-action.json
 
-name: "Build Cuckoo ISO Action"
+name: "Build ArctineOS ISO Action"
 description: "Builds a Cuckoo ISO from a container image using the start.sh script."
 inputs:
   container-image:

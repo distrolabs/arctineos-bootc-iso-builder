@@ -1,6 +1,6 @@
-# ISO Builder for Arch-bootc Systems
+# ISO Builder for ArctineOS
 
-This repository contains a script and a GitHub Action to build a bootable live ISO from any Arch Linux image. The resulting ISO uses a SquashFS filesystem for the root partition, created directly from the container image layers.
+This repository contains a script and a GitHub Action to build a bootable live ISO from ArctineOS. The resulting ISO uses a SquashFS filesystem for the root partition, created directly from the container image layers.
 
 >[!IMPORTANT]
 >
@@ -32,10 +32,10 @@ jobs:
       - name: Check out repository where this action is defined
         uses: actions/checkout@v4
 
-      - name: Build ISO using cuckoo-iso-builder
-        uses: hecknt/arch-bootc-iso-builder@main # Remember to pin by commit hash
+      - name: Build ISO using the ArctineOS-bootc ISO Builder
+        uses: distrolabs/arctineos-bootc-iso-builder@main # Remember to pin by commit hash
         with:
-          container-image: 'ghcr.io/bootcrew/arch-bootc:latest'
+          container-image: 'ghcr.io/arctinelabs/arctineos:latest'
           iso-path: './iso/archlinux.iso'
 ```
 
@@ -58,14 +58,14 @@ You can also run the build process locally.
 
 1.  Clone this repository:
     ```bash
-    git clone https://github.com/hecknt/arch-bootc-iso-builder.git
-    cd arch-bootc-iso-builder
+    git clone https://github.com/distrolabs/arctineos-bootc-iso-builder.git
+    cd arctineos-bootc-iso-builder
     ```
 
 2.  Set your image by modifying `config.sh`
     ```bash
     # The OCI image that the ISO will be based upon.
-    SQUASHFS_CTR_IMG="ghcr.io/bootcrew/arch-bootc:latest"
+    SQUASHFS_CTR_IMG="ghcr.io/arctinelabs/arctineos:latest"
     ```
 
 3.  Run the `start.sh` script with the `SQUASHFS_CTR_IMG` environment variable within config.sh set to your desired container image. (must be ran as root)

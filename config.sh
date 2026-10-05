@@ -3,7 +3,7 @@
 # Please uncomment any environment variables that you may be using.
 
 # The OCI image that the ISO will be based upon.
-#SQUASHFS_CTR_IMG="ghcr.io/bootcrew/arch-bootc:latest"
+SQUASHFS_CTR_IMG="ghcr.io/arctinelabs/arctineos:26.10"
 
 # Determines whether the OCI image specified in $SQUASHFS_CTR_IMG will be included as an image in the final ISO's podman storage.
 # Valid values are "yes" and "no"

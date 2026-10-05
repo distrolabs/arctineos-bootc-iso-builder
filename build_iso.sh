@@ -11,7 +11,7 @@ shopt -s nullglob
 
 SQUASHFS_CTR_IMG_ROOTFS=/rootfs
 GRUB_FILE_PATH=${GRUB_FILE_PATH:?}
-OUTPUT_ISO_FILE=/out/cuckoo.iso
+OUTPUT_ISO_FILE=/out/ArctineOS.iso
 export DRACUT_NO_XATTR=1
 
 die() {
@@ -67,7 +67,7 @@ mcopy -v -i uefi.img -s "iso_files/EFI" ::
 mkdir -p "$(dirname "${OUTPUT_ISO_FILE}")"
 xorriso -as mkisofs \
     -R \
-    -V "cuckoo_boot" \
+    -V "arctine_boot" \
     -partition_offset 16 \
     -appended_part_as_gpt \
     -append_partition 2 C12A7328-F81F-11D2-BA4B-00A0C93EC93B ./uefi.img \

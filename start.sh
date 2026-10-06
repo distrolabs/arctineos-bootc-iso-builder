@@ -51,6 +51,7 @@ function podman-chroot(){
   local command="$1"
   podman run --rm -it --privileged \
     --no-hostname --no-hosts \
+    -v /var/lib/containers:/var/lib/containers:Z \
     --security-opt label=type:unconfined_t \
     --tmpfs /tmp:rw \
     --tmpfs /run:rw \
@@ -64,6 +65,7 @@ function podman-chroot-no-tty(){
   set -euo pipefail
   local command="$1"
   podman run --rm -i --privileged \
+    -v /var/lib/containers:/var/lib/containers:Z \
     --security-opt label=type:unconfined_t \
     --tmpfs /tmp:rw \
     --tmpfs /run:rw \
@@ -221,4 +223,5 @@ podman run \
     -v "$_SCRIPTDIR"/build_iso.sh:/build_iso.sh:ro \
     -v ./out:/out \
     -v "${SQUASHFS_CTR_IMAGE_MOUNTPOINT}":/rootfs \
+    -v /var/lib/containers:/var/lib/containers:Z \
     quay.io/fedora/fedora:42 /build_iso.sh

@@ -33,7 +33,7 @@ runs:
           exit 1
         fi
         mkdir -p "$(dirname "${{ inputs.iso-path }}")"
-        mv "$ISO_FILE" "${{ inputs.iso-path }}"
+        sudo mv "$ISO_FILE" "${{ inputs.iso-path }}"
         echo "ISO moved to ${{ inputs.iso-path }}"
         echo "iso-path=$(realpath "${{ inputs.iso-path }}")" >> "$GITHUB_OUTPUT"
       shell: bash

@@ -49,7 +49,7 @@ SQUASHFS_CTR_IMAGE_MOUNTPOINT=$(podman mount ${CONTAINER_ID})
 function podman-chroot(){
   set -euo pipefail
   local command="$1"
-  podman run --rm -it --privileged \
+  podman --storage-driver=vfs run --rm -it --privileged \
     --no-hostname --no-hosts \
     --security-opt label=type:unconfined_t \
     --tmpfs /tmp:rw \
@@ -63,7 +63,7 @@ function podman-chroot(){
 function podman-chroot-no-tty(){
   set -euo pipefail
   local command="$1"
-  podman run --rm -i --privileged \
+  podman --storage-driver=vfs run --rm -i --privileged \
     --no-hostname --no-hosts \
     --security-opt label=type:unconfined_t \
     --tmpfs /tmp:rw \
@@ -210,7 +210,7 @@ custom_post_hooks
 
 # Build the iso
 [ -d ./out ] || mkdir ./out && \
-podman run \
+podman --storage-driver=vfs run \
     --rm \
     -it \
     --privileged \

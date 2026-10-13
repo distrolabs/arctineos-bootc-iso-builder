@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [ "$CUCKOO_ENVIRONMENT" != true ]; then
+if [ "$ISO_ENVIRONMENT" != true ]; then
   echo "This script is not intended to be ran outside of the podman environment. Please use the start.sh script that exists in the same folder."
   exit 1
 fi

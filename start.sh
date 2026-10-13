@@ -194,6 +194,8 @@ podman-chroot 'kver=$(find /usr/lib/modules -maxdepth 1 -printf "%P" | head -1) 
     --no-hostonly \
     --no-hostonly-cmdline \
     --add "dmsquash-live dmsquash-live-autooverlay" \
+    --filesystems "iso9660 vfat" \
+    --force-drivers "usb_storage uas xhci_pci ahci" \
     --force \
     /live-initramfs.img'
 
@@ -216,7 +218,7 @@ podman run \
     -it \
     --privileged \
     --security-opt label=type:unconfined_t \
-    --env CUCKOO_ENVIRONMENT=true \
+    --env ISO_ENVIRONMENT=true \
     --env GRUB_FILE_PATH=/grub.cfg \
     --env SQUASHFS_CTR_IMAGE_MOUNTPOINT="${SQUASHFS_CTR_IMAGE_MOUNTPOINT}" \
     -v "$_SCRIPTDIR"/grub.cfg:/grub.cfg:ro \
